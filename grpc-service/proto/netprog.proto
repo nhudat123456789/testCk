@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+package netprog;
+
+service NetProgService {
+  rpc Ping (PingRequest) returns (PingReply);
+  rpc RoomStats (RoomStatsRequest) returns (RoomStatsReply);
+}
+
+message PingRequest {
+  string message = 1;
+}
+
+message PingReply {
+  string message = 1;
+  int64 server_time_ms = 2;
+}
+
+message RoomStatsRequest {
+  int64 room_id = 1;
+}
+
+message RoomStatsReply {
+  int64 room_id = 1;
+  int64 message_count = 2;
+  int64 member_count = 3;
+  string last_message_at = 4;
+}
